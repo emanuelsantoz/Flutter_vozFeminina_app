@@ -8,8 +8,7 @@ class CardTimelineTexto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.accessibility_new)),  
-
+        IconButton(onPressed: () {}, icon: Icon(Icons.accessibility_new)), 
         SizedBox(width: 15.0), // Spacing between icon and text
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

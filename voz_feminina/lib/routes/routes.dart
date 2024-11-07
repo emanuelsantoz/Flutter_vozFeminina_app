@@ -9,4 +9,8 @@ abstract class Routes {
   static const pesquisaPage = '/pesquisa';
   // [ Perfil ]
   static const perfilPage = '/perfil';
+  // [ chatList ]
+  static const chatListPage = '/chatList';
+  // [ chat ]
+  static const chatPage = '/chat';
 }

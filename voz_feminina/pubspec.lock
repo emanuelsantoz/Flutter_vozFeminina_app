@@ -62,6 +62,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_advanced_segment:
+    dependency: "direct main"
+    description:
+      name: flutter_advanced_segment
+      sha256: "58518e2b7229cc4dd98a778f594e54813a4c244bcbf9e702a8fa194bf09509b8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -139,6 +147,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.0"
+  material_segmented_control:
+    dependency: "direct main"
+    description:
+      name: material_segmented_control
+      sha256: "7c5356db9f61c25df40ccfd7f1d020f2bb6dbf7817c890d12e995f585f50e96c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   meta:
     dependency: transitive
     description:

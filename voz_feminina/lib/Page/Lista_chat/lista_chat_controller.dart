@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:voz_feminina/Core/model/time_line.dart';
 
-class ListaChatController extends GetxController {
+class ChatListController extends GetxController {
   RxBool isLoading = true.obs;
 
   @override
