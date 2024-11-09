@@ -10,70 +10,122 @@ class PesquisaPage extends GetView<PesquisaController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: GlobalColors().pink,
-        title: const Text(
-          "Buscar",
-          style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          backgroundColor: GlobalColors().pink,
+          title: const Text(
+            "Buscar",
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
+          automaticallyImplyLeading: true,
+          toolbarHeight: 114,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(00),
+                bottomRight: Radius.circular(30)),
+          ),
         ),
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-        toolbarHeight: 114,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(00),
-              bottomRight: Radius.circular(30)),
-        ),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
+        body: Stack(
           children: [
             Padding(
-                padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 20),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Colors.pink[800], // Ajuste a cor conforme necessário
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20), // Ajuste o raio dos cantos
+              padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 20),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Colors.pink[800], // Ajuste a cor conforme necessário
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // Ajuste o raio dos cantos
+                      ),
+                      elevation: 5,
+                      fixedSize: Size(334, 30), // Adiciona sombra
                     ),
-                    elevation: 5,
-                    fixedSize: Size(334, 30), // Adiciona sombra
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(Icons.search, color: Colors.white),
+                        SizedBox(width: 8),
+                        Text(
+                          'Encontre um bom relaxante',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(Icons.search, color: Colors.white),
-                      SizedBox(width: 8),
-                      Text(
-                        'Encontre um bom relaxante',
-                        style: TextStyle(color: Colors.white),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Cidade'),
+                        style: ButtonStyle(
+                            foregroundColor:
+                                WidgetStatePropertyAll(GlobalColors().primary),
+                            backgroundColor:
+                                WidgetStatePropertyAll(Colors.white),
+                            overlayColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125)),
+                            shadowColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125))),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Lugares seguros'),
+                        style: ButtonStyle(
+                            foregroundColor:
+                                WidgetStatePropertyAll(GlobalColors().primary),
+                            backgroundColor:
+                                WidgetStatePropertyAll(Colors.white),
+                            overlayColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125)),
+                            shadowColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125))),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            foregroundColor:
+                                WidgetStatePropertyAll(GlobalColors().primary),
+                            backgroundColor:
+                                WidgetStatePropertyAll(Colors.white),
+                            overlayColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125)),
+                            shadowColor: WidgetStatePropertyAll(
+                                Color.fromARGB(255, 122, 58, 125))),
+                        child: Text('Uber'),
                       ),
                     ],
                   ),
-                )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(onPressed: () {}, child: Text('Cidade')),
-                ElevatedButton(onPressed: () {}, child: Text('Lugares seguros')),
-                ElevatedButton(onPressed: () {}, child: Text('Uber'), style: ButtonStyle(fixedSize: WidgetStatePropertyAll(Size(30, 7)),)),
-              ],
-
-
-
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Oportunidades",
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Cozinheira", textDirection: TextDirection.rtl),
+                  ),
+                  Column(children: [
+                    SizedBox(height: 10),
+                    Image.asset(
+                      "assets/img/fotoFundoEstacaoBarra.png",
+                    ),
+                    SizedBox(height: 10),
+                    Image.asset(
+                      "assets/img/fotoFundoPorteiraSul.png",
+                    ),
+                  ])
+                ],
+              ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar:
-          NavigationBarVozFemina(context: context, selectIndex: 0),
-    );
+        bottomNavigationBar:
+            NavigationBarVozFemina(context: context, selectIndex: 0));
   }
 }
-
