@@ -14,22 +14,24 @@ class CardTimelineImagem extends StatelessWidget {
           children: [
             IconButton(onPressed: () {}, icon: Icon(Icons.accessibility_new)),
             SizedBox(width: 15.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("NomeUser - @handlen ° timem"),
-                Text("Informaçãoadfdasfd."),
-                Container(
-                  margin: EdgeInsetsDirectional.only(top: 10),
-                  width: 260,
-                  height: 170,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.blue),
-                  child: Text("testset"),
-                ), 
-              ],
-            ), // Spacing between icon and text Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("NomeUser - @handlen ° timem"),
+                  Text("Informaçãoadfdasfd."),
+                  Container(
+                    margin: EdgeInsetsDirectional.only(top: 10),
+                    width: MediaQuery.of(context).size.width * 11,
+                    height: 170,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.blue),
+                    child: Text("testset"),
+                  )
+                ],
+              ), // Spacing between icon and text Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            )
           ],
         ),
         Padding(

@@ -12,9 +12,9 @@ class PesquisaPage extends GetView<PesquisaController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: GlobalColors().pink,
-          title: const Text(
+          title: Text(
             "Buscar",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 23),
           ),
           centerTitle: true,
           automaticallyImplyLeading: true,
@@ -25,105 +25,142 @@ class PesquisaPage extends GetView<PesquisaController> {
                 bottomRight: Radius.circular(30)),
           ),
         ),
-        body: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 20),
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.pink[800], // Ajuste a cor conforme necessário
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Ajuste o raio dos cantos
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 20),
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(
+                        hintStyle: TextStyle(fontSize: 14, color: Colors.white),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              60,
+                            ),
+                            borderSide: BorderSide.none),
+                        fillColor: Colors.pink[800],
+                        prefixIcon: Icon(Icons.search, color: Colors.white),
+                        labelStyle: TextStyle(
+                          color: const Color.fromRGBO(173, 20, 87, 1),
+                        ),
+                        hintText: "Contatos seguros...",
+                        filled: true,
                       ),
-                      elevation: 5,
-                      fixedSize: Size(334, 30), // Adiciona sombra
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.search, color: Colors.white),
-                        SizedBox(width: 8),
-                        Text(
-                          'Encontre um bom relaxante',
-                          style: TextStyle(color: Colors.white),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.update();
+                            },
+                            style: ButtonStyle(
+                                foregroundColor: WidgetStatePropertyAll(
+                                    GlobalColors().primary),
+                                backgroundColor:
+                                    const WidgetStatePropertyAll(Colors.white),
+                                overlayColor: const WidgetStatePropertyAll(
+                                  const Color.fromRGBO(173, 20, 87, 1),
+                                ),
+                                shadowColor: const WidgetStatePropertyAll(
+                                    const Color.fromRGBO(173, 20, 87, 1))),
+                            child: Text(
+                              'Cidade',
+                              style: TextStyle(
+                                color: WidgetStateColor.resolveWith((states) {
+                                  if (states.contains(WidgetState.selected)) {
+                                    return Colors
+                                        .white; // Cor do texto quando pressionado
+                                  } else {
+                                    return GlobalColors()
+                                        .primary; // Cor do texto quando não pressionado
+                                  }
+                                }),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                padding: WidgetStatePropertyAll(
+                                    EdgeInsets.only(left: 1, right: 1)),
+                                foregroundColor: WidgetStatePropertyAll(
+                                    GlobalColors().primary),
+                                backgroundColor:
+                                    WidgetStatePropertyAll(Colors.white),
+                                overlayColor: const WidgetStatePropertyAll(
+                                    Color.fromARGB(255, 122, 58, 125)),
+                                shadowColor: WidgetStatePropertyAll(
+                                    const Color.fromARGB(255, 122, 58, 125))),
+                            child: Text(
+                              'Lugares seguros',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                foregroundColor: WidgetStatePropertyAll(
+                                    GlobalColors().primary),
+                                backgroundColor:
+                                    WidgetStatePropertyAll(Colors.white),
+                                overlayColor: WidgetStatePropertyAll(
+                                    Color.fromARGB(255, 122, 58, 125)),
+                                shadowColor: WidgetStatePropertyAll(
+                                    Color.fromARGB(255, 122, 58, 125))),
+                            child: Text('Uber'),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Cidade'),
-                        style: ButtonStyle(
-                            foregroundColor:
-                                WidgetStatePropertyAll(GlobalColors().primary),
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.white),
-                            overlayColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125)),
-                            shadowColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125))),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Lugares seguros'),
-                        style: ButtonStyle(
-                            foregroundColor:
-                                WidgetStatePropertyAll(GlobalColors().primary),
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.white),
-                            overlayColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125)),
-                            shadowColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125))),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                            foregroundColor:
-                                WidgetStatePropertyAll(GlobalColors().primary),
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.white),
-                            overlayColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125)),
-                            shadowColor: WidgetStatePropertyAll(
-                                Color.fromARGB(255, 122, 58, 125))),
-                        child: Text('Uber'),
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Oportunidades",
-                      style: TextStyle(fontSize: 30),
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text("Cozinheira", textDirection: TextDirection.rtl),
-                  ),
-                  Column(children: [
-                    SizedBox(height: 10),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Oportunidades",
+                        style: TextStyle(
+                            fontSize: 23, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child:
+                          Text("Cozinheira", textDirection: TextDirection.rtl),
+                    ),
                     Image.asset(
-                      "assets/img/fotoFundoEstacaoBarra.png",
+                      "assets/img/fotoFundoEstacaoBarra.png", // 30% da altura da tela
+                      width: MediaQuery.of(context).size.width +
+                          100, // Ocupa toda a largura disponível
+                      fit: BoxFit.cover,
                     ),
-                    SizedBox(height: 10),
-                    Image.asset(
-                      "assets/img/fotoFundoPorteiraSul.png",
-                    ),
-                  ])
-                ],
+                    Column(children: [
+                      const SizedBox(height: 10),
+                      SizedBox(height: 10),
+                      Image.asset(
+                        "assets/img/fotoFundoPorteiraSul.png",
+                        width: MediaQuery.of(context).size.width +
+                            100, // Ocupa toda a largura disponível
+                        fit: BoxFit.cover,
+                      ),
+                    ])
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         bottomNavigationBar:
             NavigationBarVozFemina(context: context, selectIndex: 0));
