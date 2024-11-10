@@ -6,6 +6,8 @@ import 'package:voz_feminina/Page/Lista_chat/lista_chat_bindings.dart';
 import 'package:voz_feminina/Page/Lista_chat/lista_chat_page.dart';
 import 'package:voz_feminina/Page/Login/login_bindings.dart';
 import 'package:voz_feminina/Page/Login/login_page.dart';
+import 'package:voz_feminina/Page/MoreTimeLine/more_timeline_bindings.dart';
+import 'package:voz_feminina/Page/MoreTimeLine/more_timeline_page.dart';
 import 'package:voz_feminina/Page/Perfil/perfil_bindings.dart';
 import 'package:voz_feminina/Page/Perfil/perfil_page.dart';
 import 'package:voz_feminina/Page/Pesquisa/pesquisa_bindings.dart';
@@ -41,15 +43,20 @@ class RoutePage {
         name: Routes.perfilPage,
         page: () => PerfilPage(),
         binding: PerfilBindings()),
-    // [ chatList ]
+    // [ Chat List ]
     GetPage(
         name: Routes.chatListPage,
         page: () => ChatListPage(),
         binding: ChatListBindings()),
-    // [ chatList ]
+    // [ Chat ]
     GetPage(
         name: Routes.chatPage,
         page: () => ChatListPage(),
         binding: ChatBindings()),
+    // [ More TimeLine ]
+    GetPage(
+        name: Routes.moreTimeLine,
+        page: () => MoreTimeLinePage(),
+        binding: MoreTimeLineBindings()),
   ];
 }
