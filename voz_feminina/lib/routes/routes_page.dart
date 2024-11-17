@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:voz_feminina/Page/Cadastro/cadastro_bindings.dart';
 import 'package:voz_feminina/Page/Cadastro/cadastro_page.dart';
 import 'package:voz_feminina/Page/Chat/chat_bindings.dart';
+import 'package:voz_feminina/Page/Chat/chat_page.dart';
 import 'package:voz_feminina/Page/Lista_chat/lista_chat_bindings.dart';
 import 'package:voz_feminina/Page/Lista_chat/lista_chat_page.dart';
 import 'package:voz_feminina/Page/Login/login_bindings.dart';
@@ -51,7 +52,7 @@ class RoutePage {
     // [ Chat ]
     GetPage(
         name: Routes.chatPage,
-        page: () => ChatListPage(),
+        page: () => ChatPage(),
         binding: ChatBindings()),
     // [ More TimeLine ]
     GetPage(

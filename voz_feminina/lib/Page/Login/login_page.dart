@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:voz_feminina/Page/Login/login_controller.dart';
 import 'package:voz_feminina/routes/routes.dart';
 
@@ -34,7 +33,6 @@ class LoginPage extends GetView<LoginController> {
                   style: TextStyle(fontSize: 18),
                 ),
                 const SizedBox(height: 20),
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -99,7 +97,6 @@ class LoginPage extends GetView<LoginController> {
                     ),
                   ],
                 ),
-
                 const SizedBox(
                   height: 20,
                 ),
@@ -126,21 +123,32 @@ class LoginPage extends GetView<LoginController> {
                 const SizedBox(
                   height: 20,
                 ),
-                // Formulário de login
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Exemplo',
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Senha',
-                    suffixIcon: Icon(Icons.visibility),
-                  ),
-                ),
+                GetBuilder<LoginController>(builder: (controller) {
+                  return Form(
+                      key: controller.formKey,
+                      child:
+                          // Formulário de login
+                          Column(
+                        children: [
+                          TextField(
+                            controller: controller.emailController,
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              hintText: 'Exemplo',
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          TextField(
+                            controller: controller.senhaController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Senha',
+                              suffixIcon: Icon(Icons.visibility),
+                            ),
+                          ),
+                        ],
+                      ));
+                }),
                 Row(
                   children: [
                     Checkbox(value: false, onChanged: (value) {}),
@@ -148,19 +156,21 @@ class LoginPage extends GetView<LoginController> {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offNamed(Routes.cadastroPage);
+                  },
                   child: const Text(
-                    'Esqueceu a senha?',
+                    'Cadastar-se?',
                     style: TextStyle(color: Colors.black87),
                   ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       backgroundColor:
-                          MaterialStatePropertyAll(Color(0xFF975173))),
+                          WidgetStatePropertyAll(Color(0xFF975173))),
                   onPressed: () {
-                    Get.toNamed(Routes.cadastroPage);
+                    controller.loginUsuario();
                   },
                   child: const Text('Entrar',
                       style: TextStyle(

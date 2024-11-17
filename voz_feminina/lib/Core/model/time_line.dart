@@ -1,9 +1,8 @@
-
 class Tweet {
   final String nomeUsuario;
-  final String handle;
+  final String? titulo;
   final String texto;
-  final String? imagem;
+  final String imagem;
   final String? link;
   final int curtidas;
   final int retweets;
@@ -11,9 +10,9 @@ class Tweet {
 
   Tweet({
     required this.nomeUsuario,
-    required this.handle,
+    required this.imagem,
     required this.texto,
-    this.imagem,
+    required this.titulo,
     this.link,
     this.curtidas = 0,
     this.retweets = 0,

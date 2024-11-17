@@ -10,6 +10,7 @@ class PesquisaPage extends GetView<PesquisaController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: GlobalColors().pink,
           title: Text(
@@ -33,6 +34,8 @@ class PesquisaPage extends GetView<PesquisaController> {
                 child: Column(
                   children: [
                     TextField(
+                      style: TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
                       decoration: InputDecoration(
                         hintStyle: TextStyle(fontSize: 14, color: Colors.white),
                         border: OutlineInputBorder(
@@ -61,6 +64,8 @@ class PesquisaPage extends GetView<PesquisaController> {
                               controller.update();
                             },
                             style: ButtonStyle(
+                                side: WidgetStatePropertyAll(
+                                    BorderSide(color: GlobalColors().pink)),
                                 foregroundColor: WidgetStatePropertyAll(
                                     GlobalColors().primary),
                                 backgroundColor:
@@ -69,7 +74,7 @@ class PesquisaPage extends GetView<PesquisaController> {
                                   const Color.fromRGBO(173, 20, 87, 1),
                                 ),
                                 shadowColor: const WidgetStatePropertyAll(
-                                    const Color.fromRGBO(173, 20, 87, 1))),
+                                    Color.fromARGB(255, 255, 255, 255))),
                             child: Text(
                               'Cidade',
                               style: TextStyle(
@@ -90,6 +95,8 @@ class PesquisaPage extends GetView<PesquisaController> {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ButtonStyle(
+                                side: WidgetStatePropertyAll(
+                                    BorderSide(color: GlobalColors().pink)),
                                 padding: WidgetStatePropertyAll(
                                     EdgeInsets.only(left: 1, right: 1)),
                                 foregroundColor: WidgetStatePropertyAll(
@@ -110,6 +117,8 @@ class PesquisaPage extends GetView<PesquisaController> {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ButtonStyle(
+                                side: WidgetStatePropertyAll(
+                                    BorderSide(color: GlobalColors().pink)),
                                 foregroundColor: WidgetStatePropertyAll(
                                     GlobalColors().primary),
                                 backgroundColor:

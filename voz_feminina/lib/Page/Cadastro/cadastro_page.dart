@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:voz_feminina/Core/colors.dart';
 import 'package:voz_feminina/Page/Cadastro/cadastro_controller.dart';
-import 'package:voz_feminina/routes/routes.dart';
 
 // ignore: must_be_immutable
 class CadastroPage extends GetView<CadastroController> {
@@ -13,9 +12,15 @@ class CadastroPage extends GetView<CadastroController> {
   Widget build(BuildContext context) {
     return GetBuilder<CadastroController>(builder: (controller) {
       return Scaffold(
-        backgroundColor: GlobalColors().background,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: const BackButton(),
+          backgroundColor: Colors.white,
+          leading: BackButton(
+            onPressed: () {
+              controller.nivelFormulario--;
+              controller.update();
+            },
+          ),
           actions: [
             Image.asset("img/vozFeminina.png",
                 height: 40, alignment: AlignmentDirectional.centerEnd),
@@ -132,6 +137,38 @@ class CadastroPage extends GetView<CadastroController> {
                               children: [
                                 const SizedBox(height: 20),
                                 const Text(
+                                  'Por favor informe seu telefone',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 5),
+                                const Text(
+                                  'Cadastre-se para avançar!',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                const SizedBox(height: 20),
+                                TextFormField(
+                                  controller: controller.telefoneController,
+                                  decoration: const InputDecoration(
+                                      label: Text("Telefone:")),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Visibility(
+                            visible: controller.nivelFormulario.value == 4
+                                ? true
+                                : false,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 20),
+                                const Text(
                                   'Por favor informe sua senha!',
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
@@ -176,8 +213,8 @@ class CadastroPage extends GetView<CadastroController> {
                       controller.nivelFormulario++;
                       controller.update();
 
-                      if (controller.nivelFormulario > 3) {
-                        Get.toNamed(Routes.homePage);
+                      if (controller.nivelFormulario > 4) {
+                        controller.cadastrarUsuario();
                       }
                     },
                     backgroundColor: GlobalColors().primary,

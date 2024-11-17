@@ -5,7 +5,7 @@ import 'package:voz_feminina/Page/Login/login_bindings.dart';
 import 'package:voz_feminina/routes/routes.dart';
 import 'package:voz_feminina/routes/routes_page.dart';
 
-void main() {
+void main() async {
   runApp(GetMaterialApp(
     title: 'Voz Feminina',
     debugShowCheckedModeBanner: false,
@@ -14,7 +14,6 @@ void main() {
     getPages: RoutePage.pages,
     locale: const Locale('pt', 'br'),
     themeMode: ThemeMode.light,
-    
   ));
 
   SystemChrome.setPreferredOrientations([

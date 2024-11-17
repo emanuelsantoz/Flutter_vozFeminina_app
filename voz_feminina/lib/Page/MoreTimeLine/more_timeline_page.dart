@@ -10,48 +10,67 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder<MoreTimeLineController>(builder: (controller){
+      return  Scaffold( 
         appBar: AppBar(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(30),
             ),
           ),
-          toolbarHeight: 130,
+          toolbarHeight: 170,
           backgroundColor: GlobalColors().pink,
-          leading: Padding(
+          leading: const Padding(
             padding:
-                const EdgeInsets.only(left: 10), // Adjust padding as needed
-            child: Image.asset(
-              "assets/img/fotoPerfil.png",
-            ),
+                EdgeInsets.only(left: 3), // Adjust padding as needed
+            child: CircleAvatar(backgroundImage: AssetImage("assets/img/minhaFotoPerfil.png"),),
           ),
-          title: const Padding(
-            padding: EdgeInsets.only(left: 6.0), // Adjust padding as needed
+          title: Padding(
+            padding: const EdgeInsets.only(left: 6.0), // Adjust padding as needed
             child: Text(
-              "Ana Santos",
+               controller.nomeUsuario,
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                  const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: const Size(3, 15),
+            preferredSize: const Size(1, 1),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: 16.0), // Adjust padding as needed
-              child: TextField(
-                style: const TextStyle(color: Colors.white),
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  hintText: "O que você esta pensando?",
-                  hintStyle: const TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      60,
+              child: Column(
+                children: [
+                  TextField(
+                    style: const TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
+                    controller: controller.tituloInputMoreTimeLine,
+                    decoration: InputDecoration(
+                      hintText: "Titulo",
+                      hintStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
-                    borderSide: BorderSide.none,
                   ),
-                ),
+                  TextField(
+                    style: const TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
+                    controller: controller.inputMoreTimeLine,
+                    decoration: InputDecoration(
+                      hintText: "O que você esta pensando?",
+                      hintStyle: const TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -63,7 +82,10 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Text("Adicionar Elementos Visuais:", style: TextStyle(fontWeight: FontWeight.w500),),
+                  const Text(
+                    "Adicionar Elementos Visuais:",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -132,7 +154,12 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
                     children: [
                       Expanded(
                         child: Container(
-                          child: Column(
+                          height: 120,
+                          alignment: AlignmentDirectional.center,
+                          decoration: BoxDecoration(
+                              color: GlobalColors().pink,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -149,11 +176,6 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
                               ),
                             ],
                           ),
-                          height: 120,
-                          alignment: AlignmentDirectional.center,
-                          decoration: BoxDecoration(
-                              color: GlobalColors().pink,
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
                       SizedBox(
@@ -192,8 +214,9 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
           ),
         ),
         bottomSheet: Padding(
+            padding: EdgeInsets.only(bottom: 34),
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 FontAwesomeIcons.paperPlane,
                 size: 25,
                 color: Colors.white,
@@ -204,8 +227,13 @@ class MoreTimeLinePage extends GetView<MoreTimeLineController> {
                   backgroundColor: WidgetStatePropertyAll(
                     GlobalColors().pink,
                   )),
-              onPressed: () {},
-            ),
-            padding: EdgeInsets.only(bottom: 34)));
-  }
+              onPressed: () {
+                controller.criarUmNovoComentario(
+                    controller.tituloInputMoreTimeLine.text,
+                    controller.inputMoreTimeLine.text,
+                    "assets/img/minhaFotoPerfil.png");
+              },
+            )));
+
+    });   }
 }

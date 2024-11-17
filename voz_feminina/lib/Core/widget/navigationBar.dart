@@ -22,7 +22,7 @@ class NavigationBarState extends State<NavigationBarVozFemina> {
   late int selectedIndex = widget.selectIndex;
   List<IconData> icons = [
     Icons.search,
-    FontAwesomeIcons.plus,
+    Icons.home,
     Icons.person,
   ];
 
@@ -77,16 +77,16 @@ class NavigationBarState extends State<NavigationBarVozFemina> {
         setState(() {
           selectedIndex = index;
         });
-        Get.toNamed(routes);
+        Get.offAllNamed(routes);
       },
       icon: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           border: Border.all(
-              width: 5, color: isSelected ? GlobalColors().second : Colors.transparent),
+              width: 5, color: isSelected ? GlobalColors().pink : Colors.transparent),
           shape: BoxShape.circle,
-          color: isSelected ? GlobalColors().second : Colors.transparent,
+          color: isSelected ? GlobalColors().pink : Colors.transparent,
         ),
         child: Icon(
           icon,
