@@ -17,7 +17,7 @@ class LoginPage extends GetView<LoginController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  "img/vozFeminina.png",
+                  "assets/img/vozFeminina.png",
                   height: 40,
                   alignment: AlignmentDirectional.centerEnd,
                 ),

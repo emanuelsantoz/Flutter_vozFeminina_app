@@ -22,7 +22,7 @@ class CadastroPage extends GetView<CadastroController> {
             },
           ),
           actions: [
-            Image.asset("img/vozFeminina.png",
+            Image.asset("assets/img/vozFeminina.png",
                 height: 40, alignment: AlignmentDirectional.centerEnd),
             const SizedBox(
               height: 20,
